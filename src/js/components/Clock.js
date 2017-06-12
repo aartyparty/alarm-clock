@@ -81,7 +81,9 @@ var Clock = function(options) {
      * */
     function setAlarmClockRing(shouldClockRing) {
         if(shouldClockRing) {
-            container.querySelector('.alarm-clock__clock').className += ' ring';
+            if(!container.querySelector('.alarm-clock__clock').classList.contains('ring')) {
+                container.querySelector('.alarm-clock__clock').className += ' ring';
+            }
         }
         else {
             container.querySelector('.alarm-clock__clock').className = container.querySelector('.alarm-clock__clock').className.replace(' ring', '');
