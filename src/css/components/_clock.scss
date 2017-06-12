@@ -1,0 +1,132 @@
+// animation for indicating that an alarm has gone off
+@keyframes ring-clock {
+    0% {
+        background: $white;
+    }
+    25% {
+        background: $blue;
+    }
+    50% {
+        background: $white;
+    }
+    75% {
+        background: $blue;
+    }
+    100% {
+        background: $white;
+    }
+}
+
+.alarm-clock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include font-roboto();
+    font-weight: 400;
+    color: $white;
+    background: linear-gradient(to bottom right, $purple, $violet);
+    padding: 40px 0;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: $tablet) {
+        flex-grow: 1;
+        margin-bottom: 0;
+        height: calc(100vh - 80px);
+    }
+
+    &__time {
+        font-size: 1.4rem;
+        text-align: center;
+        letter-spacing: 2px;
+        margin-bottom: 40px;
+
+        @media screen and (min-width: $tablet) {
+            font-size: 2.4rem;
+        }
+
+    }
+
+    &__clock {
+        position: relative;
+        width: 175px;
+        height: 175px;
+        background-color: $white;
+        border-radius: 50%;
+        transform: rotate(88deg);
+        margin: 12.5px auto;
+
+        @media screen and (min-width: $tablet) {
+            width: 250px;
+            height: 250px;
+            margin: 0;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: -12.5px;
+            top: -12.5px;
+            width: 200px;
+            height: 200px;
+            background-color: $white;
+            border-radius: 50%;
+            opacity: 0.5;
+
+            @media screen and (min-width: $tablet) {
+                width: 275px;
+                height: 275px;
+            }
+        }
+
+        &.ring {
+            &:before {
+                animation: ring-clock 2s infinite;
+            }
+        }
+
+        &--hours, &--minutes, &--seconds {
+            position: absolute;
+            top: 87.5px;
+            height: 2px;
+            background-color: $black;
+            transform: rotate(0deg);
+            transform-origin: 85% 50%;
+
+            @media screen and (min-width: $tablet) {
+                top: 125px;
+            }
+        }
+
+        &--hours {
+            width: 70px;
+            left: 25px;
+
+            @media screen and (min-width: $tablet) {
+                width: 100px;
+                left: 43px;
+            }
+        }
+
+        &--minutes {
+            width: 90px;
+            left: 8px;
+
+            @media screen and (min-width: $tablet) {
+                width: 120px;
+                left: 25px;
+            }
+        }
+
+        &--seconds {
+            width: 135px;
+            left: -30px;
+
+            @media screen and (min-width: $tablet) {
+                width: 190px;
+                left: -35px;
+            }
+        }
+    }
+}

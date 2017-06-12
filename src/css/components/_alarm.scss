@@ -1,0 +1,108 @@
+.alarms {
+    @include font-roboto();
+
+    @media screen and (min-width: $tablet) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 40px);
+        padding: 40px 20px 0;
+    }
+
+    &__list {
+        width: 80%;
+        padding: 0;
+        margin: 0 auto;
+
+        @media screen and (min-width: $tablet) {
+            width: 100%;
+            margin-bottom: 60px;
+            overflow-y: scroll;
+        }
+
+        &--alarm {
+            font-size: 2.8rem;
+            text-align: center;
+            color: $purple;
+            list-style-type: none;
+            border-bottom: 1px solid $violet;
+            padding: 20px 0;
+
+            &:last-child {
+                margin-bottom: 40px;
+
+                @media screen and (min-width: $tablet) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    &__add-alarm {
+        margin-bottom: 126px;
+
+        &--button {
+            display: block;
+            width: 220px;
+            font-size: 1rem;
+            text-align: center;
+            color: $purple;
+            background-color: transparent;
+            border: 1px solid $violet;
+            border-radius: 4px;
+            outline: 0;
+            margin: 0 auto;
+            padding: 5px 0;
+        }
+
+        &--error {
+            display: none;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 10px;
+
+            &.show {
+                display: block;
+            }
+        }
+
+        &__form {
+            font-size: 2.8rem;
+            text-align: center;
+            color: $dark-grey;
+            margin-bottom: 20px;
+
+            &--hour, &--minutes, &--period {
+                display: inline-block;
+                vertical-align: middle;
+                overflow: auto;
+
+                &--selected {
+                    border: 1px solid transparent;
+                    border-bottom-color: $grey;
+                }
+
+                &--list {
+                    position: absolute;
+                    max-height: 0;
+                    background-color: $true-white;
+                    border: 1px solid $grey;
+                    border-top: none;
+                    transition: max-height 0.2s ease;
+                    overflow-y: scroll;
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        list-style-type: none;
+                    }
+
+                    &.open {
+                        max-height: 175px;
+                    }
+                }
+            }
+        }
+    }
+}
