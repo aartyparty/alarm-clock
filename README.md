@@ -14,6 +14,6 @@ Built an Alarm Clock. At it's minimum, this alarm clock shows the current time, 
 
 `gulp prod`
 
-### Open '
+### Open
 
 `dist/index.html` in browser
